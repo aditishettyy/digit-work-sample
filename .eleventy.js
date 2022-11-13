@@ -12,6 +12,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("toAbsoluteUrl", (url) => {
     return new URL(url, site.baseUrl).href
   })
+
+  eleventyConfig.addFilter("bust", (url) => {
+    const [urlPart, paramPart] = url.split("?");
+    const params = new URLSearchParams(paramPart || "");
+    params.set("v", new Date().getTime());
+    return `${urlPart}?${params}`;
+  });
   
   return {
     dir: {
