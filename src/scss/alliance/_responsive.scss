@@ -1,0 +1,296 @@
+@media (max-width: 991px) {
+  #hero-partners {
+    min-height: 580px;
+  }
+  #fdx {
+    #grid {
+      width: 100%;
+    }
+    .bottom_section {
+      width: 100%;
+      position: relative;
+    }
+    #fdx .bottom_section img {
+      width: 200px;
+      height: 200px;
+      transform: translateY(-32%);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #hero-partners {
+    #hero-partners-video {
+      width: 260%;
+    }
+  }
+  #particles-sections {
+    .stats {
+      .stats-item {
+        margin: 0 25px;
+        &:nth-of-type(2) {
+          background: none;
+        }
+      }
+    }
+  }
+  #menu-mobile {
+    &.menu-mobile-buzz {
+      .navbar-brand {
+        img {
+          max-width: 120px;
+        }
+      }
+    }
+  }
+  #alliances {
+    padding-top: 180px;
+    .digits-and-financial {
+      img {
+        max-width: 500px;
+      }
+    }
+  }
+  #fdx {
+    #grid {
+      .row {
+        margin-bottom: 0;
+      }
+      .w-box-5 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 48.8% !important;
+        flex: 0 0 48.8% !important;
+        max-width: 48.5%;
+        margin-bottom: 15px;
+      }
+    }
+    .bottom_section {
+      img {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 40px;
+        left: -55px;
+      }
+      p {
+        width: 78%;
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+  }
+  #commitment {
+    .content {
+      .box {
+        font-size: 12px;
+        background-color: initial;
+        background-image: none;
+        text-align: center;
+        padding: 0;
+        .corners {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  #hero-partners {
+    #hero-partners-video {
+      width: 350%;
+    }
+  }
+  #particles-sections {
+    .stats {
+      .stats-item {
+        margin: 0 55px;
+        height: auto;
+        padding: 30px 0;
+        .description {
+          min-height: auto;
+        }
+        &:nth-of-type(1) {
+          background: none;
+        }
+      }
+    }
+  }
+  #alliances {
+    padding-top: 100px;
+    .video-overlay {
+      #alliances-video {
+        width: 200%;
+      }
+    }
+    .digits-and-financial {
+      img {
+        max-width: 350px;
+      }
+    }
+  }
+  #fdx {
+    #grid {
+      .w-box-5 {
+        margin-bottom: 10px;
+      }
+      .edges {
+        .fluo {
+          width: 100px;
+          height: auto;
+        }
+        .fdx_title {
+          width: 45%;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .bottom_section {
+      flex-wrap: wrap;
+      height: auto;
+      p {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+      }
+      img {
+        position: relative;
+        margin: 0 auto;
+        left: 0;
+        top: -5px;
+        margin-bottom: -120px;
+      }
+      p {
+        text-align: center;
+        font-size: 15px;
+        line-height: 23px;
+      }
+    }
+  }
+  #galaxy {
+    .box-video {
+      #galaxy-video {
+        width: 200%;
+      }
+    }
+    main {
+      blockquote {
+        p {
+          font-size: 22px;
+          line-height: 30px;
+        }
+      }
+    }
+    .smoke {
+      bottom: 0;
+    }
+    main {
+      #quotesSlider {
+        #quotes-selector {
+          ol {
+            width: 100%;
+            flex-wrap: wrap;
+            .selector-item {
+              margin: 10px 0 50px;
+              background-size: 100px, 110px;
+              min-height: 130px;
+              min-width: 120px;
+              .fast-gif {
+                max-width: 110px;
+              }
+              &.active {
+                background-size: 120px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  #hero-partners {
+    min-height: 450px;
+  }
+  #alliances {
+    .digits-and-financial {
+      img {
+        max-width: 300px;
+      }
+    }
+  }
+  #particles-sections {
+    .stats {
+      margin-bottom: 40px;
+      .stats-item {
+        padding: 20px 0;
+        h3 {
+          font-size: 45px;
+        }
+        .description {
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+    }
+    .glow {
+      &.blue {
+        max-width: 306px;
+      }
+      &.green {
+        max-width: 299px;
+        display: none;
+      }
+    }
+  }
+  #galaxy {
+    .active-glow {
+      display: none;
+    }
+    header {
+      .text-box {
+        padding: 40px;
+        p {
+          font-size: 17px;
+        }
+      }
+    }
+    main {
+      margin-top: 30px;
+      #quotesSlider {
+        .carousel-inner {
+          .carousel-item {
+            .quote {
+              p {
+                font-size: 22px;
+                line-height: 1.8rem;
+              }
+            }
+          }
+        }
+        #quotes-selector {
+          ol {
+            .selector-item {
+              margin: 10px 0 0;
+              &::after {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #partner {
+    .video-box video {
+      width: 900px;
+    }
+    .content {
+      margin-top: 400px;
+    }
+  }
+}

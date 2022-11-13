@@ -1,0 +1,340 @@
+/********* COLORS *********/
+
+$green: #00fd9d;
+$grey: #9a9a9a;
+$blue: #091220;
+$background-lighter: #0c1729;
+$light-blue: #0df;
+$middle-blue: #4f78aa;
+$dark-blue: #334f71;
+
+body {
+  font-family: "font", Avenir, Helvetica, Arial, sans-serif;
+}
+
+#sb-site {
+  background: $blue;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(36, 94, 127, 0) 0%,
+    #245e7f 35%,
+    #245e7f 65%,
+    rgba(36, 94, 127, 0) 100%
+  );
+  opacity: 0.5;
+}
+
+/********* FONTS *********/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  color: #fff;
+}
+
+.h1,
+h1 {
+  font-size: 55px;
+  line-height: 60px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  letter-spacing: -0.03em;
+  span {
+    font-weight: 400;
+  }
+}
+
+h2,
+.h2 {
+  font-size: 37px;
+  line-height: 38px;
+  font-weight: 100;
+  margin-bottom: 30px;
+  letter-spacing: -0.01em;
+}
+
+.h3,
+h3 {
+  font-size: 27px;
+  line-height: 34px;
+  font-weight: 100;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+  color: #fff;
+  b,
+  strong {
+    font-weight: 400;
+  }
+}
+
+h4,
+.h4 {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 300;
+}
+
+h5,
+.h5 {
+  font-size: 19px;
+  line-height: 23px;
+  font-weight: 200;
+}
+
+h6,
+.h6 {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+b,
+strong {
+  font-weight: 300;
+}
+
+p {
+  color: $grey;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 300;
+  text-align: center;
+  strong {
+    color: #fff;
+  }
+  &.smaller {
+    font-size: 16px;
+    line-height: 21px;
+  }
+}
+
+.featured {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.small-cont {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  &.wider {
+    max-width: 550px;
+  }
+  p.narrow {
+    max-width: 500px;
+    margin: 0 auto 10px;
+  }
+}
+
+/********* BUTTONS *********/
+
+button:focus {
+  outline: none;
+}
+
+.btn-primary {
+  text-transform: uppercase;
+  color: $blue;
+  background: linear-gradient(#00e9d1, $green);
+  font-weight: 900;
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  border: 0px;
+  transition: 0.5s opacity ease;
+  transition: 0.5s color ease;
+  transition: 0.5s box-shadow ease;
+  text-shadow: -1px 1px #00e9d1;
+  margin: 0;
+  cursor: pointer;
+  &.small {
+    padding: 17px 24px 14px;
+    font-size: 12px;
+    line-height: 13px;
+    letter-spacing: 0.1em;
+    box-shadow: 0px 18px 25px rgba(0, 0, 0, 0.35);
+
+    border-radius: 2px;
+    &:hover {
+      opacity: 0.8;
+      color: $blue;
+      box-shadow: 0px 0px 70px 0px #1ed2a66e, 0px 0px 9px 0px #00000099;
+    }
+  }
+  &.big {
+    padding: 17px 30px 13px;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.1em;
+    box-shadow: 0px 18px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 5px;
+
+    &:hover {
+      opacity: 0.8;
+      color: $blue;
+      box-shadow: 0px 0px 65px 0px opacify($green, 0.75);
+    }
+  }
+  &.disabled {
+    background: linear-gradient(rgba(41, 56, 86, 0.4), rgba(20, 26, 37, 0.4));
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    color: #353a44;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    cursor: not-allowed;
+    &:hover {
+      opacity: 1;
+      color: #353a44;
+      background: linear-gradient(rgba(41, 56, 86, 0.4), rgba(20, 26, 37, 0.4));
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    }
+  }
+  &:hover {
+    color: $blue;
+    background: linear-gradient(#00e9d1, $green);
+    border-color: $green;
+    text-decoration: none;
+  }
+  &:active {
+    color: $blue;
+  }
+}
+
+.btn-secondary {
+  text-transform: uppercase;
+  color: $blue;
+  background: #e0f1f4;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  text-decoration: none;
+  transition: 0.5s all ease;
+  outline: none;
+  border: 0px solid transparent;
+  border-radius: 0px;
+  padding: 17px 25px 14px;
+  position: relative;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
+  &:hover {
+    box-shadow: 0 0 65px fade-out(white, 0.2);
+    background: #e0f1f4;
+    color: $blue;
+    opacity: 0.8;
+  }
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle,
+.btn-primary.focus,
+.btn-primary:focus {
+  color: $blue;
+  background-color: inherit;
+  border-color: $blue;
+  border: none;
+  box-shadow: 0 0 0 0rem rgba(38, 143, 255, 0);
+}
+
+.link {
+  text-decoration: none;
+  outline: none;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 21px;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+  color: #fff;
+  &:before {
+    left: 50%;
+  }
+  &:after {
+    right: 50%;
+  }
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    width: 0px;
+    height: 1px;
+    margin: 5px 0 0;
+    transition: all 0.2s ease-in-out;
+    transition-duration: 0.55s;
+    opacity: 1;
+    background-color: #fff;
+  }
+  &:hover {
+    transition: text-decoration 0.2s ease-in-out;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    &:before,
+    &:after {
+      width: 50%;
+      opacity: 1;
+    }
+  }
+  span.arrow {
+    background: url(../images/white-arrow.svg);
+    content: "";
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 5px;
+    height: 8px;
+    margin-left: 4px;
+    margin-bottom: 0;
+  }
+  &.grey {
+    color: $grey;
+    &:before,
+    &:after {
+      background-color: $grey;
+    }
+    span.arrow {
+      background: url(../images/grey-arrow.svg);
+      content: "";
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 5px;
+      height: 8px;
+      margin-left: 4px;
+      margin-bottom: 0;
+    }
+  }
+  &.blue {
+    color: $middle-blue;
+    &:before,
+    &:after {
+      background-color: #4f78aa;
+    }
+    span.arrow {
+      background-image: url(../images/blue-arrow.svg);
+    }
+    &:hover {
+      color: $middle-blue;
+      &:before,
+      &:after {
+        background-color: #4f78aa;
+      }
+    }
+  }
+}
