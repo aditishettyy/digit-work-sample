@@ -5,17 +5,17 @@ import anime from "animejs";
 import "particles.js"
 
 const statOne = $("#particles-sections .stats .stat-one h3");
-const myObject0 = {
+const myObject1 = {
   prop1: "0",
 };
 
 const statTwo = $("#particles-sections .stats .stat-two h3.number");
-const myObject1 = {
+const myObject2 = {
   prop2: "0",
 };
 
 const statThree = $("#particles-sections .stats .stat-three h3.number");
-const myObject2 = {
+const myObject3 = {
   prop3: "0",
 };
 
