@@ -24,7 +24,6 @@ module.exports = function(eleventyConfig) {
   //   return `${urlPart}?${params}`;
   // });
 
-  
   return {
     dir: {
       input: 'src', 

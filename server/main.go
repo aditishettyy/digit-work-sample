@@ -55,13 +55,7 @@ func main() {
 		// fmt.Fprintf(w, "notes = %s\n", notes)
 
 		tx, err := db.Begin()
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
-		// stmt, err := tx.Prepare("insert into user(first_name, last_name) values('a', 'b')")
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
+        checkErr(err)
 
 		stmt, err := tx.Prepare("INSERT INTO user(first_name, last_name, company, email, phone, notes) values(?,?,?,?,?,?)")
         checkErr(err)
@@ -69,6 +63,8 @@ func main() {
         res, err := stmt.Exec(first_name, last_name, company, email, phone, notes)
         checkErr(err)
 		fmt.Println(res)
+
+		http.Redirect(w, r, "/8080", http.StatusFound)
 
 		tx.Commit()
 		stmt.Close()
