@@ -5,12 +5,14 @@ import (
 	"log"
 	"net/http"
 	"fmt"
+	// "io/ioutil"
+	// "encoding/json"
 	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
 	db, err := sql.Open("sqlite3", "./alliance.db")
-	checkErr(err)
+	logErr(err)
 
 	sqlStmt :=
 	`
@@ -34,6 +36,14 @@ func main() {
 	http.HandleFunc("/submit", func(w http.ResponseWriter, r *http.Request) {
 		// TODO: Handle form submission!
 		log.Printf("SUBMIT")
+
+		// reqBody, err := ioutil.ReadAll(r.Body)
+		// if err != nil {
+		// 	log.Fatal(err)
+		// }
+		// fmt.Printf("%s", reqBody)
+		// log.Println(reqBody)
+
 		if err := r.ParseForm(); err != nil {
 			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			log.Fatal(err)
@@ -46,28 +56,40 @@ func main() {
 		email := r.FormValue("email")
 		phone := r.FormValue("phone")
 		notes := r.FormValue("notes")
-
-		// fmt.Fprintf(w, "first_name = %s\n", first_name)
-		// fmt.Fprintf(w, "last_name = %s\n", last_name)
-		// fmt.Fprintf(w, "company = %s\n", company)
-		// fmt.Fprintf(w, "email = %s\n", email)
-		// fmt.Fprintf(w, "phone = %s\n", phone)
-		// fmt.Fprintf(w, "notes = %s\n", notes)
+		
+		log.Printf("first_name", first_name);
+		log.Printf("last_name", last_name);
 
 		tx, err := db.Begin()
-        checkErr(err)
+        logErr(err)
 
 		stmt, err := tx.Prepare("INSERT INTO user(first_name, last_name, company, email, phone, notes) values(?,?,?,?,?,?)")
-        checkErr(err)
+        logErr(err)
 
         res, err := stmt.Exec(first_name, last_name, company, email, phone, notes)
-        checkErr(err)
+        logErr(err)
 		fmt.Println(res)
-
-		http.Redirect(w, r, "/8080", http.StatusFound)
 
 		tx.Commit()
 		stmt.Close()
+
+		log.Printf("Success")
+
+		// w.Header().Set("Content-Type", "application/json")
+		// w.WriteHeader(http.StatusCreated)
+		// json.NewEncoder(w).Encode({ success: "true"})
+
+		// w.WriteHeader(http.StatusNotFound)
+		// w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		// resp := make(map[string]string)
+		// resp["message"] = "Status Created"
+		// jsonResp, err := json.Marshal(resp)
+		// if err != nil {
+		// 	log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+		// }
+		// w.Write(jsonResp)
+		w.Write([]byte("OK"))
 	})
 
 	log.Printf("Starting Alliance HTTP server...\n")
@@ -76,7 +98,7 @@ func main() {
 	}
 }
 
-func checkErr(err error) {
+func logErr(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
