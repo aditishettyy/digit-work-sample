@@ -10,15 +10,20 @@ module.exports = function(eleventyConfig) {
 
   // add the absolute url to css, js, and images
   eleventyConfig.addFilter("toAbsoluteUrl", (url) => {
-    return new URL(url, site.baseUrl).href
+    const urlParts = url.split("?");
+    const params = new URLSearchParams(urlParts[1] || "");
+    params.set("v", new Date().getTime());
+    const nonCacheUrl = new URL(url, site.baseUrl).href
+    return `${nonCacheUrl}?${params}`;
   })
 
-  eleventyConfig.addFilter("bust", (url) => {
-    const [urlPart, paramPart] = url.split("?");
-    const params = new URLSearchParams(paramPart || "");
-    params.set("v", new Date().getTime());
-    return `${urlPart}?${params}`;
-  });
+   // eleventyConfig.addFilter("bust", (url) => {
+  //   const [urlPart, paramPart] = url.split("?");
+  //   const params = new URLSearchParams(paramPart || "");
+  //   params.set("v", new Date().getTime());
+  //   return `${urlPart}?${params}`;
+  // });
+
   
   return {
     dir: {
