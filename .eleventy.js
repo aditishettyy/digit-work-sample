@@ -17,13 +17,6 @@ module.exports = function(eleventyConfig) {
     return `${nonCacheUrl}?${params}`;
   })
 
-   // eleventyConfig.addFilter("bust", (url) => {
-  //   const [urlPart, paramPart] = url.split("?");
-  //   const params = new URLSearchParams(paramPart || "");
-  //   params.set("v", new Date().getTime());
-  //   return `${urlPart}?${params}`;
-  // });
-
   return {
     dir: {
       input: 'src', 
