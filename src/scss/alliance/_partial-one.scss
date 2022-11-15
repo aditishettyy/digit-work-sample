@@ -388,6 +388,7 @@
   main {
     margin-top: 80px;
     #quotesSlider {
+      z-index: 9999999;
       .carousel-inner {
         .carousel-item {
           margin-bottom: -20px;
