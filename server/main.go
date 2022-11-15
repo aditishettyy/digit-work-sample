@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 	"fmt"
-	// "io/ioutil"
-	// "encoding/json"
+	"strings"
+
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -34,32 +34,19 @@ func main() {
 	}
 
 	http.HandleFunc("/submit", func(w http.ResponseWriter, r *http.Request) {
-		// TODO: Handle form submission!
-		log.Printf("SUBMIT")
-
-		// reqBody, err := ioutil.ReadAll(r.Body)
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
-		// fmt.Printf("%s", reqBody)
-		// log.Println(reqBody)
-
 		if err := r.ParseForm(); err != nil {
 			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			log.Fatal(err)
 			return
 		}
 
-		first_name := r.FormValue("first_name")
-		last_name := r.FormValue("last_name")
-		company := r.FormValue("company")
-		email := r.FormValue("email")
-		phone := r.FormValue("phone")
-		notes := r.FormValue("notes")
+		first_name := strings.TrimSpace(r.FormValue("first_name"))
+		last_name := strings.TrimSpace(r.FormValue("last_name"))
+		company := strings.TrimSpace(r.FormValue("company"))
+		email := strings.TrimSpace(r.FormValue("email"))
+		phone := strings.TrimSpace(r.FormValue("phone"))
+		notes := strings.TrimSpace(r.FormValue("notes"))
 		
-		log.Printf("first_name", first_name);
-		log.Printf("last_name", last_name);
-
 		tx, err := db.Begin()
         logErr(err)
 
@@ -68,28 +55,19 @@ func main() {
 
         res, err := stmt.Exec(first_name, last_name, company, email, phone, notes)
         logErr(err)
-		fmt.Println(res)
+
+		id, err := res.LastInsertId()
+        logErr(err)
+
+		resStr := fmt.Sprintf("%s%d", "new user has been created with id: ", id)
 
 		tx.Commit()
 		stmt.Close()
 
-		log.Printf("Success")
-
-		// w.Header().Set("Content-Type", "application/json")
-		// w.WriteHeader(http.StatusCreated)
-		// json.NewEncoder(w).Encode({ success: "true"})
-
-		// w.WriteHeader(http.StatusNotFound)
-		// w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "text/plain")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		// resp := make(map[string]string)
-		// resp["message"] = "Status Created"
-		// jsonResp, err := json.Marshal(resp)
-		// if err != nil {
-		// 	log.Fatalf("Error happened in JSON marshal. Err: %s", err)
-		// }
-		// w.Write(jsonResp)
-		w.Write([]byte("OK"))
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(resStr))
 	})
 
 	log.Printf("Starting Alliance HTTP server...\n")
