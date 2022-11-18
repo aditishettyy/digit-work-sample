@@ -605,24 +605,22 @@
       $(function () {
         $('#alliance-submit-btn').click(function () {
           const formData = $('#alliance-contact-form').serializeArray();
-          var d = {};
+          var postData = {};
           for (const element of formData) {
-            d[element.name] = element.value;
+            postData[element.name] = element.value;
           }
           $.ajax({
             url: 'http://localhost:8081/submit',
             type: 'post',
             dataType: 'text',
             cache: false,
-            data: d,
+            data: postData,
             crossDomain: true,
             success: function (data) {
-              console.log('success')
               $('#alliance-form-container').css("display", "none");
               $('#success-message').css("display", "block");
             },
             error: function (xhr, ajaxOptions, thrownError) {
-              console.log('error', thrownError)
               $('#alliance-form-container').css("display", "none");
               $('#error-message').css("display", "block");
             },
