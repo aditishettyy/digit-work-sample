@@ -23,7 +23,8 @@ func main() {
 			company text,
 			email text,
 			phone integer,
-			notes text
+			notes text,
+			created_at timestamp default current_timestamp
 		);
 	`
 	_, err = db.Exec(sqlStmt)
